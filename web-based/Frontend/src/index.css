@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* src/index.css */
+body {
+  /* You can use a Tailwind color or a custom hex code */
+  background-color: #111827; /* This is Tailwind's gray-900 */
+}
