@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import TeacherSidebar from "../components/TeacherDashboard/TeacherSidebar";
 import Topbar from "../components/Topbar";
 
 export default function DashboardLayout({ role, title, children, user }) {
@@ -13,7 +14,11 @@ export default function DashboardLayout({ role, title, children, user }) {
           isSidebarOpen ? "w-64" : "w-0"
         } overflow-hidden`}
       >
-        <Sidebar role={role} />
+        { role === "teacher" ? (
+          <TeacherSidebar role = {role}/>
+        ) : (
+          <Sidebar role = {role}/>
+        )}
       </div>
 
       {/* Main area */}
