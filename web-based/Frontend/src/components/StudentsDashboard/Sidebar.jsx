@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   LayoutDashboard,
   BookOpen,
@@ -6,11 +6,10 @@ import {
   Trophy,
   LogOut,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-// 1. Added a 'path' property to each navigation item
 const navItems = [
-  { name: "Dashboard", path: "/student/dashboard", icon: <LayoutDashboard size={20} /> },
+  { name: "Dashboard", path: "/student", icon: <LayoutDashboard size={20} /> },
   { name: "Courses", path: "/student/courses", icon: <BookOpen size={20} /> },
   { name: "Schedule", path: "/student/schedule", icon: <Calendar size={20} /> },
   { name: "Leaderboards", path: "/student/leaderboard", icon: <Trophy size={20} /> },
@@ -35,13 +34,7 @@ const SidebarItem = ({ item, isActive, onClick }) => (
 
 export default function Sidebar() {
   const navigate = useNavigate();
-  const [activeItem, setActiveItem] = useState("Dashboard");
-
-  // 2. Created a handler that updates state AND navigates
-  const handleItemClick = (item) => {
-    setActiveItem(item.name);
-    navigate(item.path);
-  };
+  const location = useLocation();
 
   const handleLogout = () => {
     navigate("/login");
@@ -50,6 +43,7 @@ export default function Sidebar() {
   return (
     <aside className="w-64 flex-shrink-0 p-4">
       <div className="h-full bg-black/30 backdrop-blur-xl rounded-2xl p-4 flex flex-col">
+        {/* ... Header section remains the same ... */}
         <div className="flex items-center mb-10">
           <div className="bg-white/20 p-2 rounded-full">
             <LayoutDashboard className="text-white" />
@@ -62,8 +56,8 @@ export default function Sidebar() {
               <SidebarItem
                 key={item.name}
                 item={item}
-                isActive={activeItem === item.name}
-                onClick={() => handleItemClick(item)} // 3. Updated the onClick call
+                isActive={location.pathname === item.path}
+                onClick={() => navigate(item.path)}
               />
             ))}
           </ul>

@@ -8,6 +8,8 @@ import Leaderboard from "./pages/Student/Leaderboards";
 import Profile from "./pages/Student/Profile";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Classes from "./pages/Teachers/Classes";
+import Courses from "./pages/Student/Courses";
+import Schedule from "./pages/Student/Schedule";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
       <Route index element={<StudentDashboard />} />
         <Route path="leaderboard" element={<Leaderboard />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="courses" element={<Courses/>} />
+        <Route path="schedule" element={<Schedule/>} />
       </Route>
     </Routes>
 

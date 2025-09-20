@@ -1,10 +1,12 @@
 import { useState } from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/StudentsDashboard/Sidebar";
 import TeacherSidebar from "../components/TeacherDashboard/TeacherSidebar";
 import Topbar from "../components/Topbar";
 
 export default function DashboardLayout({ role, title, children, user }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Default to open for desktop
+
+
 
   return (
     <div className="flex h-screen bg-gray-900">
@@ -17,7 +19,7 @@ export default function DashboardLayout({ role, title, children, user }) {
         { role === "teacher" ? (
           <TeacherSidebar role = {role}/>
         ) : (
-          <Sidebar role = {role}/>
+          <Sidebar role = {role} />
         )}
       </div>
 
